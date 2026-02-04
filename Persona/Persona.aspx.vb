@@ -8,6 +8,12 @@
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
         Dim persona As New Models.Persona()
 
+        'Validar campos obligatorios 
+        If txtFechaNac.Text = "" Then
+            lblResultado.Text = "Por favor, complete todos los campos obligatorios."
+            Return
+        End If
+
         persona.Nombre = txtNombre.Text.Trim()
         persona.Apellidos = txtApellidos.Text.Trim()
         persona.FechaNacimiento = txtFechaNac.Text.Trim()
