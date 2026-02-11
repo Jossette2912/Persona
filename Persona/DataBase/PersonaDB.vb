@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
+Imports Persona.Utils
 Public Class PersonaDB
-    Private db As New DbHelper()
+    Private db As New DbHealper()
     'Crear Persona
     Public Function CrearPersona(ByVal pPersona As Models.Persona) As Boolean
         'Lógica para crear una nueva persona en la base de datos
@@ -12,12 +13,15 @@ Public Class PersonaDB
             Dim parameters As New Dictionary(Of String, Object) From {
               {"@Nombre", pPersona.Nombre},
               {"@FechaNac", pPersona.FechaNacimiento},
-              {"@Correo", pPersona.Correo}
+              {"@Correo", pPersona.Correo},
+              {"@Apellidos", pPersona.Apellidos},
+              {"@Documento", pPersona.NumeroDocumento},
+              {"@TipoDocumento", pPersona.TipoDocumento}
             }
 
             'recuerda guardar en git
 
-            db.ExecuteNonQuery(query, parameters)
+            Return db.ExecuteNonQuery(query, parameters)
         End Using
         Return True
     End Function
