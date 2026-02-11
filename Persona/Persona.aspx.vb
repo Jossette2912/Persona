@@ -33,4 +33,16 @@ Public Class Persona
             SwalUtils.ShowSwalError(Me, "No se pudo crear persona.")
         End If
     End Sub
+
+    Protected Sub gvPersonas_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
+        e.Cancel = True ' Cancelar la eliminación predeterminada del GridView
+        Dim id As Integer = Convert.ToInt32(gvPersonas.DataKeys(e.RowIndex).Value)
+        Dim resultado = db.EliminarPersona(id)
+        If resultado Then
+            SwalUtils.ShowSwal(Me, "Persona eliminada exitosamente.")
+            gvPersonas.DataBind() ' Refrescar el GridView después de eliminar
+        Else
+            SwalUtils.ShowSwalError(Me, "No se pudo eliminar persona.")
+        End If
+    End Sub
 End Class

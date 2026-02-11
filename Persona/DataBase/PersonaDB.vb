@@ -19,10 +19,17 @@ Public Class PersonaDB
               {"@TipoDocumento", pPersona.TipoDocumento}
             }
 
-            'recuerda guardar en git
-
             Return db.ExecuteNonQuery(query, parameters)
         End Using
         Return True
+    End Function
+    Public Function EliminarPersona(ByVal id As Integer) As Boolean
+
+        Dim query As String = "DELETE FROM Personas WHERE IDPersona = @Id"
+        Dim parameters As New Dictionary(Of String, Object) From {
+                {"@Id", id}
+            }
+            Return db.ExecuteNonQuery(query, parameters)
+
     End Function
 End Class
