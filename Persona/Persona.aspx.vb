@@ -24,25 +24,27 @@ Public Class Persona
         persona.NumeroDocumento = txtDocumento.Text.Trim()
 
         lblResultado.Text = persona.Resumen()
-        Dim resultado = db.CrearPersona(persona)
+        Dim errorMessage As String = ""
+        Dim resultado = db.CrearPersona(persona, errorMessage)
 
         If resultado Then
             SwalUtils.ShowSwal(Me, "Persona creada exitosamente.")
             gvPersonas.DataBind()
         Else
-            SwalUtils.ShowSwalError(Me, "No se pudo crear persona.")
+            SwalUtils.ShowSwalError(Me, errorMessage)
         End If
     End Sub
 
     Protected Sub gvPersonas_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
         e.Cancel = True ' Cancelar la eliminación predeterminada del GridView
         Dim id As Integer = Convert.ToInt32(gvPersonas.DataKeys(e.RowIndex).Value)
-        Dim resultado = db.EliminarPersona(id)
+        Dim errorMessage As String = ""
+        Dim resultado = db.EliminarPersona(id, errorMessage)
         If resultado Then
             SwalUtils.ShowSwal(Me, "Persona eliminada exitosamente.")
             gvPersonas.DataBind() ' Refrescar el GridView después de eliminar
         Else
-            SwalUtils.ShowSwalError(Me, "No se pudo eliminar persona.")
+            SwalUtils.ShowSwalError(Me, errorMessage)
         End If
     End Sub
 End Class

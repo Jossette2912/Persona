@@ -3,7 +3,7 @@ Imports Persona.Utils
 Public Class PersonaDB
     Private db As New DbHealper()
     'Crear Persona
-    Public Function CrearPersona(ByVal pPersona As Models.Persona) As Boolean
+    Public Function CrearPersona(ByVal pPersona As Models.Persona, ByRef errorMessage As String) As Boolean
         'Lógica para crear una nueva persona en la base de datos
         Using db.GetConnection()
             Dim query As String = "INSERT INTO Personas (TipoDocumento, Documento, Nombre, Apellidos, FechaNac, Correo) 
@@ -19,17 +19,17 @@ Public Class PersonaDB
               {"@TipoDocumento", pPersona.TipoDocumento}
             }
 
-            Return db.ExecuteNonQuery(query, parameters)
+            Return db.ExecuteNonQuery(query, parameters, errorMessage)
         End Using
         Return True
     End Function
-    Public Function EliminarPersona(ByVal id As Integer) As Boolean
+    Public Function EliminarPersona(ByVal id As Integer, ByRef errorMessage As String) As Boolean
 
         Dim query As String = "DELETE FROM Personas WHERE IDPersona = @Id"
         Dim parameters As New Dictionary(Of String, Object) From {
                 {"@Id", id}
             }
-            Return db.ExecuteNonQuery(query, parameters)
+        Return db.ExecuteNonQuery(query, parameters, errorMessage)
 
     End Function
 End Class
