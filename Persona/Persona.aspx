@@ -65,7 +65,8 @@
     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary my-2" OnClick="btnGuardar_Click" />
     <asp:Label ID="lblResultado" runat="server" Text="" CssClass="control-label"></asp:Label>
     
-    <asp:GridView ID="gvPersonas" runat="server" AutoGenerateColumns="False" DataKeyNames="IDPersona" DataSourceID="SqlDataSource1" OnRowDeleting="gvPersonas_RowDeleting"> 
+    <asp:GridView ID="gvPersonas" CssClass="table table-striped table-hover" HeaderStyle-CssClass="table-primary"
+        runat="server" AutoGenerateColumns="False" DataKeyNames="IDPersona" DataSourceID="SqlDataSource1" OnRowDeleting="gvPersonas_RowDeleting"> 
         <Columns>
             <asp:BoundField DataField="IDPersona" HeaderText="IDPersona" InsertVisible="False" ReadOnly="True" SortExpression="IDPersona" />
             <asp:BoundField DataField="TipoDocumento" HeaderText="TipoDocumento" SortExpression="TipoDocumento" />
