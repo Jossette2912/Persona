@@ -74,7 +74,7 @@
             <asp:CommandField ShowSelectButton="True" ControlStyle-CssClass="btn btn-primary" SelectText="<i class='bi bi-pencil'>" />
             <%--<asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn btn-primary" EditText="<i class='bi bi-pencil'>" />--%>
             <asp:BoundField DataField="IDPersona" HeaderText="IDPersona" InsertVisible="False" ReadOnly="True" SortExpression="IDPersona" />
-            <asp:BoundField DataField="TipoDocumento" HeaderText="TipoDocumento" SortExpression="TipoDocumento" />
+            <asp:BoundField ControlStyle-CssClass="d-none" DataField="TipoDocumento" HeaderText="TipoDocumento" SortExpression="TipoDocumento" />
             <asp:BoundField DataField="Documento" HeaderText="Documento" SortExpression="Documento" />
             <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
             <asp:BoundField DataField="Apellidos" HeaderText="Apellidos" SortExpression="Apellidos" />

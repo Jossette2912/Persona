@@ -54,6 +54,11 @@ Public Class Persona
 
     Protected Sub gvPersonas_SelectedIndexChanged(sender As Object, e As EventArgs)
         Dim selectedRow As GridViewRow = gvPersonas.SelectedRow
+        Dim id = selectedRow.Cells(1).Text
+
+        Dim errorMessage As String = ""
+        Dim persona As Models.Persona = db.ConsultarPersona(id, errorMessage)
+
         txtDocumento.Text = selectedRow.Cells(3).Text
         txtNombre.Text = HttpUtility.HtmlDecode(selectedRow.Cells(4).Text)
         txtApellidos.Text = selectedRow.Cells(5).Text

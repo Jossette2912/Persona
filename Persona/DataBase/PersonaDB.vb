@@ -32,4 +32,8 @@ Public Class PersonaDB
         Return db.ExecuteNonQuery(query, parameters, errorMessage)
 
     End Function
+
+    Friend Function ConsultarPersona(id As String, errorMessage As String) As Models.Persona
+        Throw New NotImplementedException()
+    End Function
 End Class
