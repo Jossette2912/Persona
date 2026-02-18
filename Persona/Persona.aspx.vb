@@ -47,4 +47,16 @@ Public Class Persona
             SwalUtils.ShowSwalError(Me, errorMessage)
         End If
     End Sub
+
+    Protected Sub gvPersonas_RowEditing(sender As Object, e As GridViewEditEventArgs)
+
+    End Sub
+
+    Protected Sub gvPersonas_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim selectedRow As GridViewRow = gvPersonas.SelectedRow
+        txtDocumento.Text = selectedRow.Cells(3).Text
+        txtNombre.Text = HttpUtility.HtmlDecode(selectedRow.Cells(4).Text)
+        txtApellidos.Text = selectedRow.Cells(5).Text
+        ddlTipoDocumento.SelectedValue = selectedRow.Cells(2).Text
+    End Sub
 End Class

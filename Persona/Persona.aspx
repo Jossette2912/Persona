@@ -66,8 +66,13 @@
     <asp:Label ID="lblResultado" runat="server" Text="" CssClass="control-label"></asp:Label>
     
     <asp:GridView ID="gvPersonas" CssClass="table table-striped table-hover" HeaderStyle-CssClass="table-primary"
-        runat="server" AutoGenerateColumns="False" DataKeyNames="IDPersona" DataSourceID="SqlDataSource1" OnRowDeleting="gvPersonas_RowDeleting"> 
-        <Columns>
+        runat="server" AutoGenerateColumns="False" DataKeyNames="IDPersona" DataSourceID="SqlDataSource1"
+        OnRowEditing="gvPersonas_RowEditing"
+        OnSelectedIndexChanged="gvPersonas_SelectedIndexChanged"
+        OnRowDeleting="gvPersonas_RowDeleting"> 
+        <Columns>            
+            <asp:CommandField ShowSelectButton="True" ControlStyle-CssClass="btn btn-primary" SelectText="<i class='bi bi-pencil'>" />
+            <%--<asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn btn-primary" EditText="<i class='bi bi-pencil'>" />--%>
             <asp:BoundField DataField="IDPersona" HeaderText="IDPersona" InsertVisible="False" ReadOnly="True" SortExpression="IDPersona" />
             <asp:BoundField DataField="TipoDocumento" HeaderText="TipoDocumento" SortExpression="TipoDocumento" />
             <asp:BoundField DataField="Documento" HeaderText="Documento" SortExpression="Documento" />
@@ -75,14 +80,10 @@
             <asp:BoundField DataField="Apellidos" HeaderText="Apellidos" SortExpression="Apellidos" />
             <asp:BoundField DataField="FechaNac" HeaderText="FechaNac" SortExpression="FechaNac" />
             <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
-            <asp:CommandField ShowDeleteButton="True" />
+            <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="btn btn-danger" DeleteText="<i class='bi bi-trash'>" />
         </Columns>
     </asp:GridView>
 
-
-
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:II-46ConnectionString %>" ProviderName="<%$ ConnectionStrings:II-46ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Personas]"></asp:SqlDataSource>
-
-
 
 </asp:Content>
